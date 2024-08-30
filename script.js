@@ -14,6 +14,7 @@ const questions = [
         answers: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "Jane Austen"],
         correct: "Harper Lee"
     }
+
 ];
 
 let currentQuestionIndex = 0;
@@ -55,15 +56,23 @@ function showQuestion() {
 function selectAnswer(selectedAnswer) {
     const correctAnswer = questions[currentQuestionIndex].correct;
     userAnswers[currentQuestionIndex] = selectedAnswer;
-
+    
     const answers = document.querySelectorAll('.answer');
     answers.forEach(answer => {
         if (answer.textContent === correctAnswer) {
             answer.classList.add('correct');
+        
         } else if (answer.textContent === selectedAnswer) {
-            answer.classList.add('incorrect');
-        }
-    });
+            answer.classList.add('incorrect');    }})
+            
+    const feedback = document.getElementById("feedback");    
+if (selectedAnswer === questions[currentQuestion].correct) {
+  feedback.textContent = "Correct!";
+  correctAnswers++;
+} else {
+  feedback.textContent = "Incorrect!.";
+
+    };   
 
     if (selectedAnswer === correctAnswer) {
         score++;
